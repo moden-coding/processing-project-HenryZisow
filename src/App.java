@@ -1,6 +1,8 @@
 import processing.core.*;
 
 public class App extends PApplet {
+
+    float uselsss;
     float r = 1; //color of rectangles
     float g = 1; //color of rectangles
     float b = 1; //color of rectangles
