@@ -1,7 +1,6 @@
 import processing.core.*;
 
 public class App extends PApplet {
-    // ADD A HIGHSCORE
     float r = 1; // color of rectangles
     float g = 1; // color of rectangles
     float b = 1; // color of rectangles
@@ -124,6 +123,7 @@ public class App extends PApplet {
             }
 
         } else if (scene == 2) { // game over screen for when you touch the rectangles
+            int pointsaway = highscore - score;
             background(0);
             fill(255, 0, 0);
             textSize(150);
@@ -136,6 +136,15 @@ public class App extends PApplet {
             fill(255);
             textSize(45);
             text("Press 'enter' to return to the main menu", 35, 100);
+            if (score == highscore) {
+                fill(0, 255, 120);
+                textSize(60);
+                text("You got the highscore!", 135, 565);
+            } else if (score < highscore) {
+                fill(0, 255, 120);
+                textSize(32);
+                text("You were " + pointsaway + " points away from the highscore", 110, 570);
+            }
 
         } else if (scene == 3) { // loading screen to load you into the game
             background(200); // makes the background grey
@@ -151,7 +160,7 @@ public class App extends PApplet {
             if (highscore > 0) { // displays the highscore on the title screen if it exists
                 fill(0, 178, 100);
                 textSize(50);
-                text("Highscore: " + highscore + "!", 250, 100);
+                text("Highscore: " + highscore, 250, 100);
             }
 
         } else if (scene == 4) { // scene that gives you the controls
