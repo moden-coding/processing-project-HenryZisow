@@ -1,4 +1,5 @@
 import processing.core.*;
+//ADD ELAPSED TIME
 
 public class App extends PApplet {
     float r = 1; // color of rectangles
@@ -10,7 +11,7 @@ public class App extends PApplet {
     float rectX2; // rectangle distance along the screen
     float rectHeight = 150; // rectangle length
     float rectHeight2 = rectHeight + 200; // rectangle on the bottom length
-    float speed = 5; // speed in which the rectangles go across the screen
+    float speed = 3; // speed in which the rectangles go across the screen
     float gap; // width of gap in between the rectangles
     PImage img; // image for the character
     PVector position; // location of the character
@@ -22,7 +23,7 @@ public class App extends PApplet {
     int score = 0; // restarts you score to zero
     int currentColor; // used to detect if the character is touching the rectangles
     PImage ballImg; // chatgpt used to make the ball appear an an image
-    int highscore = 0;
+    int highscore = 0; //keeps track of highscore
 
     public static void main(String[] args) { // starts the processing sketch
         PApplet.main("App");
@@ -51,8 +52,7 @@ public class App extends PApplet {
         imageMode(CORNER); // chatgpt used to make the ball appear an an image
         image(img, 0, 0, width, height); // creates the image in the background
         update(); // calls the update method
-        currentColor = get((int) position.x, (int) position.y); // gets the color of where the character is to make sure
-                                                                // it isn't over one of the rectangles
+        currentColor = get((int) position.x, (int) position.y); // gets the color of where the character is to make sure it isn't over one of the rectangles
         imageMode(CENTER); // chatgpt used to make the ball appear an an image
         image(ballImg, position.x, position.y, 40, 40); // chatgpt used to make the ball an image of my choice
 
@@ -72,28 +72,23 @@ public class App extends PApplet {
             textSize(42); // size of the text
             text("Highscore: " + highscore, 20, 90); // creates a scoreboard on the screen
 
-            if (rectX1 + 100 < position.x && rectX2 + 100 < position.x) { // adds points to the score after the
-                                                                          // character gets past the right edge of the
-                                                                          // rectangles
+            if (rectX1 + 100 < position.x && rectX2 + 100 < position.x) { // adds points to the score after the character gets past the right edge of the rectangles
                 score++; // adds one to the score
                 rectX1 = width; // puts rectangle back to the edge of the screen
                 rectX2 = width; // puts rectangle back to the edge of the screen
                 rectHeight = random(50, 250); // creates a new height for the rectangle and randomizes the height
-                rectHeight2 = height - rectHeight - random(100, 200); // creates a new height for the rectangle and
-                                                                      // randomizes the height
+                rectHeight2 = height - rectHeight - random(100, 200); // creates a new height for the rectangle and randomizes the height
             }
             speed = 5 + (score * 0.3f); // slowly increases the speed as your score increases
 
-            currentColor = get((int) (position.x), (int) (position.y - 10)); // detects if the character touches the
-                                                                             // rectangles through color
+            currentColor = get((int) (position.x), (int) (position.y - 10)); // detects if the character touches the rectangles through color
             if (red(currentColor) == r && green(currentColor) == g && blue(currentColor) == b) {
                 scene = 2;
                 rectX1 = 0;
                 rectX2 = 0;
                 velocity = new PVector(0, 0);
             }
-            currentColor = get((int) (position.x), (int) (position.y + 10)); // detects if the character touches the
-                                                                             // rectangles through color
+            currentColor = get((int) (position.x), (int) (position.y + 10)); // detects if the character touches the rectangles through color
             if (red(currentColor) == r && green(currentColor) == g && blue(currentColor) == b) {
                 scene = 2;
                 rectX1 = 0;
@@ -101,16 +96,14 @@ public class App extends PApplet {
                 velocity = new PVector(0, 0);
             }
 
-            currentColor = get((int) (position.x - 10), (int) (position.y)); // detects if the character touches the
-                                                                             // rectangles through color
+            currentColor = get((int) (position.x - 10), (int) (position.y)); // detects if the character touches the rectangles through color
             if (red(currentColor) == r && green(currentColor) == g && blue(currentColor) == b) {
                 scene = 2;
                 rectX1 = 0;
                 rectX2 = 0;
                 velocity = new PVector(0, 0);
             }
-            currentColor = get((int) (position.x + 10), (int) (position.y)); // detects if the character touches the
-                                                                             // rectangles through color
+            currentColor = get((int) (position.x + 10), (int) (position.y)); // detects if the character touches the rectangles through color
             if (red(currentColor) == r && green(currentColor) == g && blue(currentColor) == b) {
                 scene = 2;
                 rectX1 = 0;
