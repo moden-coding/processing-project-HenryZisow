@@ -175,9 +175,9 @@ public class App extends PApplet {
     }
 
     public void update() { // this method handles the physics of the character
-        if (isJumping) {
-            velocity.y = -jumpPower;
-            isJumping = false;
+        if (isJumping) { //if the character is jumping, make the velocity the negative jump power
+            velocity.y = -jumpPower; //this is negative because the y value increases as you go further down the screen, so negative makes it go up
+            isJumping = false; //sets the boolean back to false
         }
 
         velocity.add(acceleration);
