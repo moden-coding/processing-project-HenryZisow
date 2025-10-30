@@ -48,7 +48,7 @@ public class App extends PApplet {
     }
 
     public boolean isTouchingRectangle(float playerX, float playerY, float playerSize) {
-        if (playerX + playerSize / 2 > rectX1 && playerX - playerSize / 2 < rectX1 + 100 &&
+        if (playerX + playerSize / 2 > rectX1 && playerX - playerSize / 2 < rectX1 + 100 && //checks collision with the top rectangle and resets everything if it does
                 playerY - playerSize / 2 < rectHeight) {
             scene = 2;
             score = 0;
@@ -57,7 +57,7 @@ public class App extends PApplet {
             velocity = new PVector(0, 0);
             return true;
         }
-        if (playerX + playerSize / 2 > rectX2 && playerX - playerSize / 2 < rectX2 + 100 &&
+        if (playerX + playerSize / 2 > rectX2 && playerX - playerSize / 2 < rectX2 + 100 && //checks collision with the bottom rectangle and resets everything if it does
                 playerY + playerSize / 2 > height - rectHeight2) {
             scene = 2;
             score = 0;
