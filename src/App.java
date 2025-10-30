@@ -114,19 +114,10 @@ public class App extends PApplet {
                 rectHeight2 = height - rectHeight - random(100, 200); // creates a new height for the rectangle and
                                                                       // randomizes the height
             }
-            speed = 5 + (score * 0.3f); // slowly increases the speed as your score increases
+            speed = 5 + (score * 0.3f); // slowly increases the speed as your score increases rectangles through color
 
-            currentColor = get((int) (position.x), (int) (position.y - 10)); // detects if the character touches the
-                                                                             // rectangles through color
-            if (red(currentColor) == r && green(currentColor) == g && blue(currentColor) == b) {
-                scene = 2;
-                rectX1 = 0;
-                rectX2 = 0;
-                velocity = new PVector(0, 0);
-            }
-            currentColor = get((int) (position.x), (int) (position.y + 10)); // detects if the character touches the
-                                                                             // rectangles through color
-            if (isTouchingRectangle(position.x, position.y, 40)) {
+            if (isTouchingRectangle(position.x, position.y, 40)) { // calls the isTouchingRectangle method to check for
+                                                                   // collision
             }
 
             if (score > highscore) {
@@ -211,30 +202,30 @@ public class App extends PApplet {
         if (key == ' ') {
             velocity.y = -jumpPower;
         }
-        if (key == 'r' && scene == 2) { //if r is pressed and the scene is 2, restart everything
+        if (key == 'r' && scene == 2) { // if r is pressed and the scene is 2, restart everything
             scene = 1;
             score = 0;
             rectX1 = width;
             rectX2 = width;
 
         }
-        if (keyCode == ENTER && scene == 3) { //if enter is pressed and the scene is 3, start the game
+        if (keyCode == ENTER && scene == 3) { // if enter is pressed and the scene is 3, start the game
             score = 0;
             rectX1 = width;
             rectX2 = width;
             scene = 1;
         }
-        if (keyCode == ENTER && scene == 2) { //if enter is pressed and the scene is 2, start game
+        if (keyCode == ENTER && scene == 2) { // if enter is pressed and the scene is 2, start game
             scene = 3;
             if (score == 1) {
                 score = 0;
             }
             score = 0;
         }
-        if (key == 'c' && scene == 3) { //if the c key is pressed and the scene is 3, go to the controls interface
+        if (key == 'c' && scene == 3) { // if the c key is pressed and the scene is 3, go to the controls interface
             scene = 4;
         }
-        if (key == 'b' && scene == 4) { //if the b key is pressed and the scene is 4, go back to the main menu
+        if (key == 'b' && scene == 4) { // if the b key is pressed and the scene is 4, go back to the main menu
             scene = 3;
         }
     }
