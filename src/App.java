@@ -48,7 +48,9 @@ public class App extends PApplet {
     }
 
     public boolean isTouchingRectangle(float playerX, float playerY, float playerSize) {
-        if (playerX + playerSize / 2 > rectX1 && playerX - playerSize / 2 < rectX1 + 100 && //checks collision with the top rectangle and resets everything if it does
+        if (playerX + playerSize / 2 > rectX1 && playerX - playerSize / 2 < rectX1 + 100 && // checks collision with the
+                                                                                            // top rectangle and resets
+                                                                                            // everything if it does
                 playerY - playerSize / 2 < rectHeight) {
             scene = 2;
             score = 0;
@@ -57,7 +59,10 @@ public class App extends PApplet {
             velocity = new PVector(0, 0);
             return true;
         }
-        if (playerX + playerSize / 2 > rectX2 && playerX - playerSize / 2 < rectX2 + 100 && //checks collision with the bottom rectangle and resets everything if it does
+        if (playerX + playerSize / 2 > rectX2 && playerX - playerSize / 2 < rectX2 + 100 && // checks collision with the
+                                                                                            // bottom rectangle and
+                                                                                            // resets everything if it
+                                                                                            // does
                 playerY + playerSize / 2 > height - rectHeight2) {
             scene = 2;
             score = 0;
@@ -122,7 +127,7 @@ public class App extends PApplet {
             currentColor = get((int) (position.x), (int) (position.y + 10)); // detects if the character touches the
                                                                              // rectangles through color
             if (isTouchingRectangle(position.x, position.y, 40)) {
-}
+            }
 
             if (score > highscore) {
                 highscore = score;
@@ -206,30 +211,30 @@ public class App extends PApplet {
         if (key == ' ') {
             velocity.y = -jumpPower;
         }
-        if (key == 'r' && scene == 2) {
+        if (key == 'r' && scene == 2) { //if r is pressed and the scene is 2, restart everything
             scene = 1;
             score = 0;
             rectX1 = width;
             rectX2 = width;
 
         }
-        if (keyCode == ENTER && scene == 3) {
+        if (keyCode == ENTER && scene == 3) { //if enter is pressed and the scene is 3, start the game
             score = 0;
             rectX1 = width;
             rectX2 = width;
             scene = 1;
         }
-        if (keyCode == ENTER && scene == 2) {
+        if (keyCode == ENTER && scene == 2) { //if enter is pressed and the scene is 2, start game
             scene = 3;
             if (score == 1) {
                 score = 0;
             }
             score = 0;
         }
-        if (key == 'c' && scene == 3) {
+        if (key == 'c' && scene == 3) { //if the c key is pressed and the scene is 3, go to the controls interface
             scene = 4;
         }
-        if (key == 'b' && scene == 4) {
+        if (key == 'b' && scene == 4) { //if the b key is pressed and the scene is 4, go back to the main menu
             scene = 3;
         }
     }
